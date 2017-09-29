@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/default_margin"
+    app:cardCornerRadius="@dimen/card_corner_radius_size"
+    app:cardElevation="@dimen/card_elevation_size">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.androidnetworking.widget.ANImageView
+            android:id="@+id/barPictureANImageView"
+            android:layout_width="@dimen/card_bar_width"
+            android:layout_height="@dimen/card_bar_height"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/barNameTextView"
+            android:text="@string/tittle_bar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/barPictureANImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/barDescriptionTextView"
+            android:text="@string/tittle_bar_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/barPictureANImageView"
+            app:layout_constraintTop_toBottomOf="@id/barNameTextView"/>
+
+        <TextView
+            android:id="@+id/typeBarNameTextView"
+            android:text="@string/tittle_type_bar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/barPictureANImageView"
+            app:layout_constraintTop_toBottomOf="@id/barDescriptionTextView"/>
+
+        <RatingBar
+            android:id="@+id/barRateRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/barPictureANImageView"
+            app:layout_constraintTop_toBottomOf="@id/typeBarNameTextView"
+            android:numStars="5"
+            android:rating="3"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"/>
+
+        <TextView
+            android:id="@+id/barAddressTextView"
+            android:text="@string/tittle_bar_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintStart_toEndOf="@id/barPictureANImageView"
+            app:layout_constraintTop_toBottomOf="@id/barRateRatingBar"/>
+
+        <TextView
+            android:id="@+id/barSeeMoreTextView"
+            android:text="@string/tittle_see_more_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barAddressTextView"
+            android:textColor="@color/colorAccent"
+            style="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

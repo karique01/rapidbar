@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RapidBar</string>
+
+    <string name="action_settings">Ajustes</string>
+    <string name="navigation_drawer_close">Cerrar cajon de navegacion</string>
+    <string name="navigation_drawer_open">Abrir cajon de navegacion</string>
+    <string name="menu_bars">Bares</string>
+    <string name="menu_drinks">Bebidas</string>
+    <string name="menu_credit_cards">Tarjetas de credito</string>
+    <string name="menu_consumption_record">Historial de consumo</string>
+    <string name="menu_favorites">Favoritos</string>
+    <string name="tittle_drink_name">Nombre</string>
+    <string name="tittle_drink_description">Descripcion</string>
+    <string name="tittle_drink_price">Precio</string>
+    <string name="tittle_drink_go_to_bar">Ir al bar</string>
+    <string name="tittle_bar_name">Nombre</string>
+    <string name="tittle_bar_description">Descripcion</string>
+    <string name="tittle_type_bar_name">Nombre del tipo bar</string>
+    <string name="tittle_bar_adress">Direccion del bar</string>
+    <string name="tittle_see_more_adress">Ver mas</string>
+    <string name="tittle_number_credit_card">Numero: </string>
+    <string name="tittle_expiration_date_credit_card">Fecha de expiracion: </string>
+    <string name="tittle_order_total_amount">Monto total: </string>
+    <string name="tittle_order_date">Fecha: </string>
+    <string name="tittle_order_bar_name">Nombre bar: </string>
+    <string name="tittle_order_see_more">Ver mas</string>
+    <string name="tittle_detail_quantity">Cantidad</string>
+</resources>
