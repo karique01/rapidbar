@@ -42,4 +42,12 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_main_employee">MainEmployeeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="barman">Barman</string>
+    <string name="waiter">Waiter</string>
+    <string name="chef">Chef</string>
+    <string name="stock">Stock</string>
 </resources>

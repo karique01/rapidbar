@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_barman"
+        android:icon="@drawable/ic_barman"
+        android:title="@string/barman" />
+
+    <item
+        android:id="@+id/navigation_waiter"
+        android:icon="@drawable/ic_waiter"
+        android:title="@string/waiter" />
+
+    <item
+        android:id="@+id/navigation_chef"
+        android:icon="@drawable/ic_chef"
+        android:title="@string/chef" />
+
+    <item
+        android:id="@+id/navigation_stock"
+        android:icon="@drawable/ic_stock"
+        android:title="@string/stock" />
+
+
+</menu>
