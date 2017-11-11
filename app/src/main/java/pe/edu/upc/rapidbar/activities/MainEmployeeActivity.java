@@ -16,8 +16,6 @@ import pe.edu.upc.rapidbar.fragments.WaiterFragment;
 
 public class MainEmployeeActivity extends AppCompatActivity {
 
-
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

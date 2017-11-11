@@ -1,5 +1,6 @@
 package pe.edu.upc.rapidbar.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
                 AndroidNetworking.post(RapidBarApiService.LOGIN_URL)
                         .addJSONObjectBody(jsonObject) // posting json
                         .setTag(getString(R.string.app_name))
@@ -61,8 +61,24 @@ public class LoginActivity extends AppCompatActivity {
                                     String name = response.getString("name");
                                     String userName = response.getString("userName");
                                     finish();
-                                    Intent intent =new Intent(view.getContext(),MainActivity.class);
-                                    startActivity(intent);
+                                    int tipo = 2;
+                                    Intent intent;
+                                    switch (tipo){
+                                        case  1 ://cliente
+                                            Context c = view.getContext();
+                                            intent =new Intent(c,MainActivity.class);
+                                            startActivity(intent);
+                                            break;
+                                        case  2 ://empleado
+                                            intent =new Intent(view.getContext(),MainEmployeeActivity.class);
+                                            startActivity(intent);
+                                            break;
+                                        case  3 ://administrador
+                                            intent =new Intent(view.getContext(),OrderDetailActivity.class);
+                                            startActivity(intent);
+                                            break;
+                                    }
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                     String error = "User inavalido";
@@ -76,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(view.getContext(),error,Toast.LENGTH_LONG).show();
                             }
                         });
+
             }
         });
     }

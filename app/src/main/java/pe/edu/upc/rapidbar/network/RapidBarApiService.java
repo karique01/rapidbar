@@ -1,7 +1,7 @@
 package pe.edu.upc.rapidbar.network;
 
 public class RapidBarApiService {
-    public static String BASE_URL = "http://18.220.0.217/";
+    public static String BASE_URL = "http://52.15.243.101/";
     public static String PRODUCTS_URL = BASE_URL + "api/products/";
     public static String BARS_URL = BASE_URL + "api/bars/";
 
