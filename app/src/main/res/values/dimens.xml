@@ -14,4 +14,12 @@
     <dimen name="card_bar_height">100dp</dimen>
     <dimen name="login_width">300dp</dimen>
     <dimen name="login_height">100dp</dimen>
+
+    <!--Dimens para swipe de chef-->
+
+    <dimen name="padd_10">10dp</dimen>
+    <dimen name="ic_undo">30dp</dimen>
+    <dimen name="ic_check">30dp</dimen>
+    <dimen name="thumbnail">90dp</dimen>
+    <dimen name="activity_padding_horizontal">16dp</dimen>
 </resources>

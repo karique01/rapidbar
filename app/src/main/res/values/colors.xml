@@ -8,4 +8,8 @@
     <color name="colorSecondaryText">#757575</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
+
+    <!--Colors para swipe de chef-->
+    <color name="swipe_row_background">#32e12f</color>
+
 </resources>

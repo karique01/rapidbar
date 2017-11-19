@@ -26,4 +26,8 @@
     <string name="tittle_order_bar_name">Nombre bar: </string>
     <string name="tittle_order_see_more">Ver mas</string>
     <string name="tittle_detail_quantity">Cantidad</string>
+
+    <!--Values para swipe de chef-->
+    <string name="chefTitle">No hay órdenes pendientes</string>
+    <string name="chefListo">LISTO</string>
 </resources>
