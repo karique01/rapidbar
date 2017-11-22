@@ -8,6 +8,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="No hay órdenes pendientes" />
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/barmanRecyclerView"
+      android:layout_margin="@dimen/default_margin"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scrollbars="vertical"/>
 
 </FrameLayout>
