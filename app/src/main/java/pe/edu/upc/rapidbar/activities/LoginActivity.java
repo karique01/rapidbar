@@ -22,6 +22,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pe.edu.upc.rapidbar.R;
+import pe.edu.upc.rapidbar.helpers.Constants;
+import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     AutoCompleteTextView userNameAutoCompleteTextView;
     EditText passwordEditText;
     Button loginButton;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         userNameAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.email);
         passwordEditText = (EditText) findViewById(R.id.password);
         loginButton = (Button) findViewById(R.id.email_sign_in_button);
+        mContext = getApplicationContext();
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -59,28 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
                                 try {
-                                    String id = response.getString("id");
-                                    String name = response.getString("name");
-                                    String userName = response.getString("userName");
-                                    finish();
-                                    int tipo = 2;
-                                    Intent intent;
-                                    switch (tipo){
-                                        case  1 ://cliente
-                                            Context c = view.getContext();
-                                            intent =new Intent(c,MainActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                        case  2 ://empleado
-                                            intent =new Intent(view.getContext(),MainEmployeeActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                        case  3 ://administrador
-                                            intent =new Intent(view.getContext(),OrderDetailActivity.class);
-                                            startActivity(intent);
-                                            break;
-                                    }
-
+                                    UserLogin userLogin = new UserLogin();
+                                    userLogin.setId(response.getString("id"));
+                                    userLogin.setName(response.getString("name"));
+                                    userLogin.setUserName(response.getString("userName"));
+                                    userLogin.setUserType(response.getString("userType"));
+                                    redirectToUserInterface(userLogin);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                     String error = "User inavalido";
@@ -97,10 +86,38 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        //valido si ya hay una cuenta previamente logueada
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(mContext);
+        if (userLogin != null){
+            redirectToUserInterface(userLogin);
+        }
     }
 
-
-
+    void redirectToUserInterface(UserLogin userLogin){
+        Intent intent;
+        SharedPreferencesAccess.SaveUserLogin(mContext,userLogin);
+        switch (userLogin.getUserType()){
+            case Constants.USER_TYPE_CUSTOMER://cliente
+                intent =new Intent(mContext,MainActivity.class);
+                startActivity(intent);
+                break;
+            case Constants.USER_TYPE_EMPLOYEE://empleado
+                intent =new Intent(mContext,MainEmployeeActivity.class);
+                startActivity(intent);
+                break;
+            case Constants.USER_TYPE_MANAGER://administrador
+                intent =new Intent(mContext,OrderDetailActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        passwordEditText.setText("");
+        userNameAutoCompleteTextView.setText("");
+    }
 }
 
 

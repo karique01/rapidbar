@@ -24,6 +24,8 @@ import pe.edu.upc.rapidbar.adapters.BarsAdapter;
 import pe.edu.upc.rapidbar.adapters.CreditCardsAdapter;
 import pe.edu.upc.rapidbar.models.Bar;
 import pe.edu.upc.rapidbar.models.CreditCard;
+import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
 import static pe.edu.upc.rapidbar.R.id.barsRecyclerView;
@@ -34,6 +36,7 @@ public class CreditCardsFragment extends Fragment {
     CreditCardsAdapter creditCardsAdapter;
     RecyclerView.LayoutManager creditCardsLayoutManager;
     List<CreditCard> creditCards;
+    View viewGeneral;
 
     public CreditCardsFragment() {
         // Required empty public constructor
@@ -45,7 +48,7 @@ public class CreditCardsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_credit_cards, container, false);
-
+        viewGeneral = view;
         //RecyclerView Setup
         creditCardsRecyclerView = (RecyclerView) view.findViewById(R.id.creditCardRecyclerView);
         creditCards = new ArrayList<>();
@@ -61,7 +64,10 @@ public class CreditCardsFragment extends Fragment {
 
     private void updateData() {
         //TODO: Update Sources from backend
-        AndroidNetworking.get(RapidBarApiService.CREDIT_CARDS_URL)
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(viewGeneral.getContext());
+        if (userLogin == null) return;
+
+        AndroidNetworking.get(RapidBarApiService.CREDIT_CARDS_URL+userLogin.getId())
                 .setPriority(Priority.HIGH.LOW)
                 .setTag(getString(R.string.app_name))
                 .build()

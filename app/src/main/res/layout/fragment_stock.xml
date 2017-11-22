@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     tools:context="pe.edu.upc.rapidbar.fragments.StockFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:text="@string/menu_log_out"
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_exit_to_app_black_24dp"/>
 
 </FrameLayout>

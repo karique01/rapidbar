@@ -10,6 +10,8 @@
     <string name="menu_credit_cards">Tarjetas de credito</string>
     <string name="menu_consumption_record">Historial de consumo</string>
     <string name="menu_favorites">Favoritos</string>
+    <string name="menu_log_out">Salir</string>
+
     <string name="tittle_drink_name">Nombre</string>
     <string name="tittle_drink_description">Descripcion</string>
     <string name="tittle_drink_price">Precio</string>

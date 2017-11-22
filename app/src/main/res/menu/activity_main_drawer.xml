@@ -22,5 +22,9 @@
             android:id="@+id/nav_favorites"
             android:icon="@drawable/ic_favorite_border_24dp"
             android:title="@string/menu_favorites" />
+        <item
+            android:id="@+id/nav_log_out"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/menu_log_out" />
     </group>
 </menu>

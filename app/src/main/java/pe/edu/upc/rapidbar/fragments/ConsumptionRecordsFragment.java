@@ -24,6 +24,8 @@ import pe.edu.upc.rapidbar.adapters.CreditCardsAdapter;
 import pe.edu.upc.rapidbar.adapters.OrdersAdapter;
 import pe.edu.upc.rapidbar.models.CreditCard;
 import pe.edu.upc.rapidbar.models.Order;
+import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
 
@@ -32,6 +34,7 @@ public class ConsumptionRecordsFragment extends Fragment {
     OrdersAdapter ordersAdapter;
     RecyclerView.LayoutManager ordersLayoutManager;
     List<Order> orders;
+    View viewGeneral;
 
     public ConsumptionRecordsFragment() {
         // Required empty public constructor
@@ -43,7 +46,7 @@ public class ConsumptionRecordsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_consumption_records, container, false);
-
+        viewGeneral = view;
         //RecyclerView Setup
         ordersRecyclerView = (RecyclerView) view.findViewById(R.id.consumptionRecyclerView);
         orders = new ArrayList<>();
@@ -59,7 +62,10 @@ public class ConsumptionRecordsFragment extends Fragment {
 
     private void updateData() {
         //TODO: Update Sources from backend
-        AndroidNetworking.get(RapidBarApiService.ORDERS_URL)
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(viewGeneral.getContext());
+        if (userLogin == null) return;
+
+        AndroidNetworking.get(RapidBarApiService.ORDERS_URL+userLogin.getId())
                 .setPriority(Priority.HIGH.LOW)
                 .setTag(getString(R.string.app_name))
                 .build()

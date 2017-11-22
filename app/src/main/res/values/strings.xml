@@ -9,6 +9,7 @@
     <string name="menu_credit_cards">Credit cards</string>
     <string name="menu_consumption_record">Consumption record</string>
     <string name="menu_favorites">Favorites</string>
+    <string name="menu_log_out">Log out</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -39,9 +40,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
     <string name="title_activity_main_employee">MainEmployeeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -50,4 +50,45 @@
     <string name="waiter">Waiter</string>
     <string name="chef">Chef</string>
     <string name="stock">Stock</string>
+
+    <string name="USER_TYPE_CUSTOMER">1</string>
+    <string name="USER_TYPE_EMPLOYEE">2</string>
+    <string name="USER_TYPE_MANAGER">3</string>
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
