@@ -27,6 +27,7 @@ import java.util.List;
 import pe.edu.upc.rapidbar.R;
 import pe.edu.upc.rapidbar.adapters.OrderBarmanAdapter;
 import pe.edu.upc.rapidbar.adapters.OrderChefAdapter;
+import pe.edu.upc.rapidbar.helpers.BarmanRecyclerTouchHelper;
 import pe.edu.upc.rapidbar.helpers.ChefRecyclerTouchHelper;
 import pe.edu.upc.rapidbar.models.Order;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
@@ -34,10 +35,10 @@ import pe.edu.upc.rapidbar.network.RapidBarApiService;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BarmanFragment extends Fragment  implements ChefRecyclerTouchHelper.ChefRecyclerTouchHelperListener {
+public class BarmanFragment extends Fragment  implements BarmanRecyclerTouchHelper.BarmanRecyclerTouchHelperListener {
 
     RecyclerView ordersBarmanRecyclerView;
-    OrderChefAdapter ordersBarmanAdapter;
+    OrderBarmanAdapter ordersBarmanAdapter;
     RecyclerView.LayoutManager ordersBarmanLayoutManager;
     List<Order>orders;
 
@@ -56,7 +57,7 @@ public class BarmanFragment extends Fragment  implements ChefRecyclerTouchHelper
         ordersBarmanRecyclerView = (RecyclerView) view.findViewById(R.id.barmanRecyclerView);
         orders = new ArrayList<>();
 
-        ordersBarmanAdapter = new OrderChefAdapter(orders);
+        ordersBarmanAdapter = new OrderBarmanAdapter(orders);
 
         ordersBarmanLayoutManager = new LinearLayoutManager(view.getContext());
         ordersBarmanRecyclerView.setLayoutManager(ordersBarmanLayoutManager);
@@ -66,7 +67,7 @@ public class BarmanFragment extends Fragment  implements ChefRecyclerTouchHelper
         ordersBarmanRecyclerView.setItemAnimator(new DefaultItemAnimator());
         ordersBarmanRecyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL));
 
-        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ChefRecyclerTouchHelper(0, ItemTouchHelper.LEFT, this);
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new BarmanRecyclerTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(ordersBarmanRecyclerView);
 
         return view;
