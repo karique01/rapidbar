@@ -10,6 +10,6 @@
     <color name="colorDivider">#BDBDBD</color>
 
     <!--Colors para swipe de chef-->
-    <color name="swipe_row_background">#32e12f</color>
+    <color name="swipe_row_background">@color/colorAccent</color>
 
 </resources>

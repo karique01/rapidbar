@@ -1,10 +1,6 @@
 package pe.edu.upc.rapidbar.adapters;
 
-/**
- * Created by Stefano on 17/11/2017.
- */
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,24 +9,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
-import pe.edu.upc.rapidbar.activities.OrderDetailActivity;
 import pe.edu.upc.rapidbar.models.Order;
 
-public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.OrderChefViewHolder>{
+/**
+ * Created by Sofia on 22/11/2017.
+ */
+
+public class OrderWaiterAdapter extends RecyclerView.Adapter<OrderWaiterAdapter.OrderWaiterViewHolder> {
+
 
     private Context context;
 
     private List<Order> orders;
 
-    public OrderChefAdapter() {
-    }
 
-    public OrderChefAdapter( List<Order> orders) {
+    public OrderWaiterAdapter(List<Order> orders) {
         //this.context = context;
         this.orders = orders;
     }
@@ -44,39 +40,28 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
         return orders;
     }
 
-    @Override
-    public OrderChefViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_order_chef, parent, false);
 
-        return new OrderChefViewHolder(itemView);
+    public OrderWaiterAdapter() {
     }
 
     @Override
-    public void onBindViewHolder(OrderChefViewHolder holder, final int position) {
+    public OrderWaiterAdapter.OrderWaiterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_order_waiter, parent, false);
+
+        return new OrderWaiterAdapter.OrderWaiterViewHolder(itemView);}
+
+    @Override
+    public void onBindViewHolder(OrderWaiterAdapter.OrderWaiterViewHolder holder, int position) {
+
         final Order order = orders.get(position);
         holder.name.setText("Orden número: " + order.getId());
 
         holder.price.setText("Precio: S/." + order.getTotalAmount());
 
-        holder.seemore.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), OrderDetailActivity.class);
-                intent.putExtras(order.toBundle());
-                //2 for snacks
-                intent.putExtra("productype",2);
-                view.getContext().startActivity(intent);
-            }
-
-
-        });
-        /*
-
-        Glide.with(context)
-                .load(item.getThumbnail())
-                .into(holder.thumbnail);*/
     }
+
+
     @Override
     public int getItemCount() {
         return orders.size();
@@ -96,19 +81,25 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
         notifyItemInserted(position);
     }
 
-    public class OrderChefViewHolder extends RecyclerView.ViewHolder {
+    public class OrderWaiterViewHolder extends RecyclerView.ViewHolder {
         public TextView name, price,seemore;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
 
-        public OrderChefViewHolder(View view) {
+        public OrderWaiterViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.orderName);
             price = view.findViewById(R.id.price);
-            thumbnail = view.findViewById(R.id.thumbnail);
-            seemore = view.findViewById(R.id.orderChefSeeMore);
+            //thumbnail = view.findViewById(R.id.thumbnail);
+            seemore = view.findViewById(R.id.orderBarmanSeeMore);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
         }
     }
+
+
+
+
+
+
 }

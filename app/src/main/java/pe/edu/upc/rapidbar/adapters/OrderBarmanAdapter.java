@@ -1,8 +1,4 @@
 package pe.edu.upc.rapidbar.adapters;
-
-/**
- * Created by Stefano on 17/11/2017.
- */
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -13,24 +9,26 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
 import pe.edu.upc.rapidbar.activities.OrderDetailActivity;
 import pe.edu.upc.rapidbar.models.Order;
 
-public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.OrderChefViewHolder>{
+import static android.support.constraint.R.id.parent;
+
+
+public class OrderBarmanAdapter extends RecyclerView.Adapter<OrderBarmanAdapter.OrderBarmanViewHolder> {
 
     private Context context;
 
     private List<Order> orders;
 
-    public OrderChefAdapter() {
+
+    public OrderBarmanAdapter() {
     }
 
-    public OrderChefAdapter( List<Order> orders) {
+    public OrderBarmanAdapter(List<Order> orders) {
         //this.context = context;
         this.orders = orders;
     }
@@ -45,15 +43,15 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
     }
 
     @Override
-    public OrderChefViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OrderBarmanAdapter.OrderBarmanViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_order_chef, parent, false);
+                .inflate(R.layout.card_order_barman, parent, false);
 
-        return new OrderChefViewHolder(itemView);
+        return new OrderBarmanAdapter.OrderBarmanViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(OrderChefViewHolder holder, final int position) {
+    public void onBindViewHolder(OrderBarmanAdapter.OrderBarmanViewHolder holder, int position) {
         final Order order = orders.get(position);
         holder.name.setText("Orden número: " + order.getId());
 
@@ -64,19 +62,13 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), OrderDetailActivity.class);
                 intent.putExtras(order.toBundle());
-                //2 for snacks
-                intent.putExtra("productype",2);
+                //1 for drinks
+                intent.putExtra("productype",1);
                 view.getContext().startActivity(intent);
             }
-
-
         });
-        /*
-
-        Glide.with(context)
-                .load(item.getThumbnail())
-                .into(holder.thumbnail);*/
     }
+
     @Override
     public int getItemCount() {
         return orders.size();
@@ -96,19 +88,21 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
         notifyItemInserted(position);
     }
 
-    public class OrderChefViewHolder extends RecyclerView.ViewHolder {
+    public class OrderBarmanViewHolder extends RecyclerView.ViewHolder {
         public TextView name, price,seemore;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
 
-        public OrderChefViewHolder(View view) {
+        public OrderBarmanViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.orderName);
             price = view.findViewById(R.id.price);
             thumbnail = view.findViewById(R.id.thumbnail);
-            seemore = view.findViewById(R.id.orderChefSeeMore);
+            seemore = view.findViewById(R.id.orderBarmanSeeMore);
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
         }
     }
+
 }
+
