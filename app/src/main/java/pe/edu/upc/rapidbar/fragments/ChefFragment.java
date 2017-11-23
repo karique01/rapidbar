@@ -18,8 +18,11 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +88,22 @@ public class ChefFragment extends Fragment implements ChefRecyclerTouchHelper.Ch
             // remove the item from recycler view
             ordersChefAdapter.removeItem(viewHolder.getAdapterPosition());
 
+            String idtodelete = deletedItem.getId();
+            AndroidNetworking.post("http://52.15.243.101/api/order/"+idtodelete)// posting json
+                    .setTag(getString(R.string.app_name))
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+
+                        }
+                    });
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
                     .make(this.getView(), "Orden N: " + name + " completada!", Snackbar.LENGTH_LONG);

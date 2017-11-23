@@ -37,6 +37,9 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         Order order = Order.from(getIntent().getExtras());
 
+        //Get Productype
+
+
 
         orderDetailsRecyclerView = (RecyclerView) findViewById(R.id.orderDetailRecyclerView);
         orderDetails = new ArrayList<>();
@@ -46,11 +49,30 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         orderDetailsRecyclerView.setAdapter(orderDetailsAdapter);
         orderDetailsRecyclerView.setLayoutManager(orderDetailLayoutManager);
+
+
     }
 
     private void updateData(String idOrden) {
         //TODO: Update Sources from backend
-        AndroidNetworking.get(RapidBarApiService.ORDERS_DETAILS_URL(idOrden))
+
+        int productype = getIntent().getIntExtra("productype",0);
+        //Switch for productype
+
+        String useurl = RapidBarApiService.ORDERS_DETAILS_URL(idOrden);
+        switch(productype){
+            case 0:
+                useurl = RapidBarApiService.ORDERS_DETAILS_URL(idOrden);
+                break;
+            case 1:
+                useurl = "http://52.15.243.101/api/order/"+idOrden+"/details/drinks";
+                break;
+            case 2:
+                useurl = "http://52.15.243.101/api/order/"+idOrden+"/details/snacks/";
+                break;
+
+        }
+        AndroidNetworking.get(useurl)
                 .setPriority(Priority.HIGH.LOW)
                 .setTag(getString(R.string.app_name))
                 .build()

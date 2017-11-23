@@ -55,6 +55,8 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), OrderDetailActivity.class);
                 intent.putExtras(order.toBundle());
+                //3 for all productypes
+                intent.putExtra("productype",3);
                 view.getContext().startActivity(intent);
             }
         });

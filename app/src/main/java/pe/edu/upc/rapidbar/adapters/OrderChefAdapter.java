@@ -4,6 +4,7 @@ package pe.edu.upc.rapidbar.adapters;
  * Created by Stefano on 17/11/2017.
  */
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
+import pe.edu.upc.rapidbar.activities.OrderDetailActivity;
 import pe.edu.upc.rapidbar.models.Order;
 
 public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.OrderChefViewHolder>{
@@ -56,7 +58,21 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
         holder.name.setText("Orden número: " + order.getId());
 
         holder.price.setText("Precio: S/." + order.getTotalAmount());
-/*
+
+        holder.seemore.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), OrderDetailActivity.class);
+                intent.putExtras(order.toBundle());
+                //2 for snacks
+                intent.putExtra("productype",2);
+                view.getContext().startActivity(intent);
+            }
+
+
+        });
+        /*
+
         Glide.with(context)
                 .load(item.getThumbnail())
                 .into(holder.thumbnail);*/

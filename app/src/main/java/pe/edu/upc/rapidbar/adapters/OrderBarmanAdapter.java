@@ -1,5 +1,6 @@
 package pe.edu.upc.rapidbar.adapters;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
+import pe.edu.upc.rapidbar.activities.OrderDetailActivity;
 import pe.edu.upc.rapidbar.models.Order;
 
 import static android.support.constraint.R.id.parent;
@@ -54,6 +56,17 @@ public class OrderBarmanAdapter extends RecyclerView.Adapter<OrderBarmanAdapter.
         holder.name.setText("Orden número: " + order.getId());
 
         holder.price.setText("Precio: S/." + order.getTotalAmount());
+
+        holder.seemore.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), OrderDetailActivity.class);
+                intent.putExtras(order.toBundle());
+                //1 for drinks
+                intent.putExtra("productype",1);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
