@@ -65,7 +65,7 @@ public class WaiterFragment extends Fragment {
 
         UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(this.getContext());
 
-        String useurl = "http://localhost:13947/api/employee/"+userLogin.getId()+"/order/false";
+        String useurl = "http://52.15.243.101/api/employee/"+userLogin.getId()+"/order/false";
 
         AndroidNetworking.get(RapidBarApiService.ORDERS_URL)
                 .setPriority(Priority.HIGH.LOW)

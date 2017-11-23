@@ -125,7 +125,9 @@ public class ChefFragment extends Fragment implements ChefRecyclerTouchHelper.Ch
 
         //SETEAR URL PARA FILTRO
         UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(this.getContext());
-        String useurl = "http://localhost:13947/api/employee/"+userLogin.getId()+"/order";
+        String useurl = "http://52.15.243.101/api/employee/"+userLogin.getId()+"/order";
+
+
 
             AndroidNetworking.get(useurl)
                     .setPriority(Priority.HIGH.LOW)
