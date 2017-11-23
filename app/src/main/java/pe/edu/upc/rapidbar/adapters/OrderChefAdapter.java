@@ -111,8 +111,4 @@ public class OrderChefAdapter extends RecyclerView.Adapter<OrderChefAdapter.Orde
             viewForeground = view.findViewById(R.id.view_foreground);
         }
     }
-
-
-
-
 }

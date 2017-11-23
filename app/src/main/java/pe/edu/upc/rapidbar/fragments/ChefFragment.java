@@ -31,6 +31,8 @@ import pe.edu.upc.rapidbar.R;
 import pe.edu.upc.rapidbar.adapters.OrderChefAdapter;
 import pe.edu.upc.rapidbar.helpers.ChefRecyclerTouchHelper;
 import pe.edu.upc.rapidbar.models.Order;
+import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
 /**
@@ -120,7 +122,12 @@ public class ChefFragment extends Fragment implements ChefRecyclerTouchHelper.Ch
         }
     }
     private void updateData() {
-            AndroidNetworking.get(RapidBarApiService.ORDERS_URL)
+
+        //SETEAR URL PARA FILTRO
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(this.getContext());
+        String useurl = "http://localhost:13947/api/employee/"+userLogin.getId()+"/order";
+
+            AndroidNetworking.get(useurl)
                     .setPriority(Priority.HIGH.LOW)
                     .setTag(getString(R.string.app_name))
                     .build()

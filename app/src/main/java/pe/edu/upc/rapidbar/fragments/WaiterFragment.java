@@ -23,6 +23,8 @@ import pe.edu.upc.rapidbar.R;
 import pe.edu.upc.rapidbar.adapters.OrdersAdapter;
 import pe.edu.upc.rapidbar.models.Bar;
 import pe.edu.upc.rapidbar.models.Order;
+import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
 /**
@@ -60,6 +62,10 @@ public class WaiterFragment extends Fragment {
     }
 
     private void updateData() {
+
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(this.getContext());
+
+        String useurl = "http://localhost:13947/api/employee/"+userLogin.getId()+"/order/false";
 
         AndroidNetworking.get(RapidBarApiService.ORDERS_URL)
                 .setPriority(Priority.HIGH.LOW)
