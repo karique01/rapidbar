@@ -18,7 +18,39 @@ public class Order {
     private String totalAmount;
     private String date;
     private String barName;
+    public static List<Drink> drinksCart = new ArrayList<>();
 
+    public static void addProductToCart(Drink drink){
+        drinksCart.add(drink);
+    }
+    public static float totalAmountFromCart(){
+        float c = 0;
+        for (int i = 0; i< drinksCart.size(); i++){
+            c += Float.valueOf(drinksCart.get(i).getPrice());
+        }
+        return c;
+    }
+    public static void removeProductFromCart(String id){
+        for (int i = 0; i< drinksCart.size(); i++){
+            if (drinksCart.get(i).getId().equals(id)){
+                drinksCart.remove(i);
+                break;
+            }
+        }
+    }
+    public static void clearProductsFromCart(){
+        drinksCart.clear();
+    }
+
+    public static int getQuantityOfProductsById(String productId){
+        int c = 0;
+        for (int i = 0; i< drinksCart.size(); i++){
+            if (drinksCart.get(i).getId().equals(productId)){
+                c++;
+            }
+        }
+        return c;
+    }
     public Order() {
     }
 

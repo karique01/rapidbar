@@ -19,7 +19,7 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.OrderDetailActivity" />
         <activity
             android:name=".activities.LoginActivity"
@@ -32,7 +32,12 @@
         </activity>
         <activity
             android:name=".activities.MainEmployeeActivity"
-            android:label="@string/title_activity_main_employee"></activity>
+            android:label="@string/title_activity_main_employee" />
+        <activity
+            android:parentActivityName=".activities.MainActivity"
+            android:name=".activities.BarActivity"
+            android:label="@string/title_activity_bar"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

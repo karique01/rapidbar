@@ -7,10 +7,12 @@
     <string name="navigation_drawer_open">Abrir cajon de navegacion</string>
     <string name="menu_bars">Bares</string>
     <string name="menu_drinks">Bebidas</string>
+    <string name="menu_snacks">Piqueos</string>
     <string name="menu_credit_cards">Tarjetas de credito</string>
     <string name="menu_consumption_record">Historial de consumo</string>
     <string name="menu_favorites">Favoritos</string>
     <string name="menu_log_out">Salir</string>
+    <string name="menu_products">Productos</string>
 
     <string name="tittle_drink_name">Nombre</string>
     <string name="tittle_drink_description">Descripcion</string>
@@ -32,4 +34,12 @@
     <!--Values para swipe de chef-->
     <string name="chefTitle">No hay órdenes pendientes</string>
     <string name="chefListo">LISTO</string>
+    <string name="number_credit_card">Numero de trajeta</string>
+    <string name="expiration_date_credit_card">Fecha de expiracion</string>
+    <string name="month">Mes</string>
+    <string name="Year">Año</string>
+    <string name="credit_card_number">Numero de trajeta de credito</string>
+    <string name="buy_product">Agregar al carrito</string>
+    <string name="User">User</string>
+    <string name="total_amount">Total Amount</string>
 </resources>

@@ -6,10 +6,12 @@
     <string name="action_settings">Settings</string>
     <string name="menu_bars">Bars</string>
     <string name="menu_drinks">Drinks</string>
+    <string name="menu_snacks">Snacks</string>
     <string name="menu_credit_cards">Credit cards</string>
     <string name="menu_consumption_record">Consumption record</string>
     <string name="menu_favorites">Favorites</string>
     <string name="menu_log_out">Log out</string>
+    <string name="menu_products">Products</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -50,10 +52,20 @@
     <string name="waiter">Waiter</string>
     <string name="chef">Chef</string>
     <string name="stock">Stock</string>
+    <string name="number_credit_card">Credit card number</string>
+    <string name="expiration_date_credit_card">Expiration date</string>
 
     <string name="USER_TYPE_CUSTOMER">1</string>
     <string name="USER_TYPE_EMPLOYEE">2</string>
     <string name="USER_TYPE_MANAGER">3</string>
+    <string name="month">Month</string>
+    <string name="Year">Year</string>
+    <string name="credit_card_number">Credit card number</string>
+    <string name="title_activity_bar">BarActivity</string>
+
+    <string name="buy_product">Add to cart</string>
+    <string name="User">User</string>
+    <string name="total_amount">Total Amount</string>
 </resources>
 
 

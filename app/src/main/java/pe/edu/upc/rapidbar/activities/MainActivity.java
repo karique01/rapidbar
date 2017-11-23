@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import pe.edu.upc.rapidbar.R;
 import pe.edu.upc.rapidbar.fragments.BarsFragment;
@@ -22,7 +23,10 @@ import pe.edu.upc.rapidbar.fragments.ConsumptionRecordsFragment;
 import pe.edu.upc.rapidbar.fragments.CreditCardsFragment;
 import pe.edu.upc.rapidbar.fragments.DrinksFragment;
 import pe.edu.upc.rapidbar.fragments.FavoritesFragment;
+import pe.edu.upc.rapidbar.fragments.SnacksFragment;
+import pe.edu.upc.rapidbar.models.Order;
 import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
+import pe.edu.upc.rapidbar.models.UserLogin;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,8 +49,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigateAccordingTo(R.id.nav_bars);
+        cambiarDatosAccesoHeader();
     }
 
+    private void cambiarDatosAccesoHeader(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(mContext);
+        if (userLogin == null) return;
+        ((TextView) headerView.findViewById(R.id.nameHeader)).setText(userLogin.getName());
+        ((TextView) headerView.findViewById(R.id.textView)).setText(userLogin.getUserName());
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -62,6 +75,12 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Order.clearProductsFromCart();
     }
 
     @Override
@@ -106,6 +125,8 @@ public class MainActivity extends AppCompatActivity
             return new ConsumptionRecordsFragment();
         } else if (id == R.id.nav_favorites) {
             return new FavoritesFragment();
+        } else if (id == R.id.nav_snacks) {
+            return new SnacksFragment();
         }
         return null;
     }

@@ -1,6 +1,7 @@
 package pe.edu.upc.rapidbar.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.androidnetworking.widget.ANImageView;
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
+import pe.edu.upc.rapidbar.activities.BarActivity;
 import pe.edu.upc.rapidbar.models.Bar;
 import pe.edu.upc.rapidbar.models.Drink;
 
@@ -59,9 +61,9 @@ public class BarsAdapter extends RecyclerView.Adapter<BarsAdapter.BarViewHolder>
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                /*Intent intent = new Intent(context, SourceActivity.class);
-                intent.putExtras(source.toBundle());
-                context.startActivity(intent);*/
+                Intent intent = new Intent(context, BarActivity.class);
+                intent.putExtras(bar.toBundle());
+                context.startActivity(intent);
             }
         });
     }

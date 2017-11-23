@@ -1,42 +1,38 @@
 package pe.edu.upc.rapidbar.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.widget.ANImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pe.edu.upc.rapidbar.R;
-import pe.edu.upc.rapidbar.activities.BarActivity;
 import pe.edu.upc.rapidbar.models.Drink;
+import pe.edu.upc.rapidbar.models.Order;
 
-
-public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder> {
+public class BuyProductAdapter extends RecyclerView.Adapter<BuyProductAdapter.DrinkViewHolderBuy>{
 
     private List<Drink> drinks;
 
-    public DrinksAdapter() {
-    }
-
-    public DrinksAdapter(List<Drink> drinks) {
-        this.setDrinks(drinks);
+    public BuyProductAdapter() {
     }
 
     @Override
-    public DrinkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DrinkViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_drink, parent,false));
+    public DrinkViewHolderBuy onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new DrinkViewHolderBuy(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.card_drink_buy, parent,false));
     }
 
     @Override
-    public void onBindViewHolder(DrinkViewHolder holder, int position) {
+    public void onBindViewHolder(DrinkViewHolderBuy holder, int position) {
         final Drink drink = drinks.get(position);
         holder.drinkPictureANImageView.setDefaultImageResId(R.mipmap.ic_launcher);
         holder.drinkPictureANImageView.setErrorImageResId(R.mipmap.ic_launcher);
@@ -52,9 +48,11 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent intent = new Intent(context, BarActivity.class);
-                intent.putExtras(drink.toBundle());
-                context.startActivity(intent);
+                Order.addProductToCart(drink);
+
+                Toast.makeText(view.getContext(),
+                        "Se agregó un "+ drink.getProductName() +" al carrito"
+                        ,Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -64,17 +62,19 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
         return drinks.size();
     }
 
+    public BuyProductAdapter(List<Drink> drinks) {
+        this.drinks = drinks;
+    }
+
     public List<Drink> getDrinks() {
         return drinks;
     }
 
-    public List<Drink> setDrinks(List<Drink> drinks) {
+    public void setDrinks(List<Drink> drinks) {
         this.drinks = drinks;
-        return drinks;
     }
 
-
-    class DrinkViewHolder extends RecyclerView.ViewHolder{
+    class DrinkViewHolderBuy extends RecyclerView.ViewHolder{
         ANImageView drinkPictureANImageView;
         TextView drinkNameTextView;
         TextView drinkDescriptionTextView;
@@ -82,54 +82,14 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
         RatingBar drinkRateRatingBar;
         TextView drinkGoToBarTextView;
 
-        public DrinkViewHolder(View itemView) {
+        public DrinkViewHolderBuy(View itemView) {
             super(itemView);
             drinkPictureANImageView = (ANImageView) itemView.findViewById(R.id.drinkPictureANImageView);
             drinkNameTextView = (TextView) itemView.findViewById(R.id.drinkNameTextView);
             drinkDescriptionTextView = (TextView) itemView.findViewById(R.id.drinkDescriptionTextView);
             drinkPriceTextView = (TextView) itemView.findViewById(R.id.drinkPriceTextView);
             drinkRateRatingBar = (RatingBar) itemView.findViewById(R.id.drinkRateRatingBar);
-            drinkGoToBarTextView = (TextView) itemView.findViewById(R.id.drinkGoToBarTextView);
+            drinkGoToBarTextView = (TextView) itemView.findViewById(R.id.addToCartTextView);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
