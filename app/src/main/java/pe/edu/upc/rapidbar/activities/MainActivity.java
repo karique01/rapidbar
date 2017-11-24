@@ -123,9 +123,9 @@ public class MainActivity extends AppCompatActivity
             return new CreditCardsFragment();
         } else if (id == R.id.nav_consumption_records) {
             return new ConsumptionRecordsFragment();
-        } else if (id == R.id.nav_favorites) {
+        }/* else if (id == R.id.nav_favorites) {
             return new FavoritesFragment();
-        } else if (id == R.id.nav_snacks) {
+        }*/ else if (id == R.id.nav_snacks) {
             return new SnacksFragment();
         }
         return null;

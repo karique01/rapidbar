@@ -22,16 +22,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import pe.edu.upc.rapidbar.R;
+import pe.edu.upc.rapidbar.fragments.ConfirmOrderDialog;
+import pe.edu.upc.rapidbar.fragments.registerDialog;
 import pe.edu.upc.rapidbar.helpers.Constants;
 import pe.edu.upc.rapidbar.models.SharedPreferencesAccess;
 import pe.edu.upc.rapidbar.models.UserLogin;
 import pe.edu.upc.rapidbar.network.RapidBarApiService;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements registerDialog.registerDialogListener {
 
     AutoCompleteTextView userNameAutoCompleteTextView;
     EditText passwordEditText;
     Button loginButton;
+    Button registerButton;
     Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         userNameAutoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.email);
         passwordEditText = (EditText) findViewById(R.id.password);
         loginButton = (Button) findViewById(R.id.email_sign_in_button);
+        registerButton = (Button) findViewById(R.id.email_sign_up_button);
+
         mContext = getApplicationContext();
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +92,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegisterDialog();
+            }
+        });
+
         //valido si ya hay una cuenta previamente logueada
         UserLogin userLogin = SharedPreferencesAccess.LoadUserLogin(mContext);
         if (userLogin != null){
@@ -112,11 +124,28 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    private void openRegisterDialog(){
+        registerDialog dialog = new registerDialog();
+        //para el callback
+        dialog.show(getSupportFragmentManager(), "Confirm");
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         passwordEditText.setText("");
         userNameAutoCompleteTextView.setText("");
+    }
+
+    @Override
+    public void acceptButton() {
+        Toast.makeText(getApplicationContext(),"User registrado",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void descartarButton() {
+
     }
 }
 

@@ -116,10 +116,9 @@ public class ConfirmOrderDialog extends AppCompatDialogFragment {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Order.clearProductsFromCart();
                         //envio los orderByProduct
                         try {
-                            String orderId = jsonObject.getString("id");
+                            String orderId = response.getString("id");
                             sendOrdersByProduct(orderId);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -147,17 +146,22 @@ public class ConfirmOrderDialog extends AppCompatDialogFragment {
             //lo envio al backend
             AndroidNetworking.post(RapidBarApiService.PRODUCTS_BY_ORDER_URL)
                     .addJSONObjectBody(jsonObject) // posting json
-                    .setTag(getString(R.string.app_name))
-                    .setPriority(Priority.MEDIUM)
+                    .setPriority(Priority.HIGH)
                     .build()
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
-                        public void onResponse(JSONObject response) {}
+                        public void onResponse(JSONObject response) {
+
+                        }
                         @Override
-                        public void onError(ANError anError) {}
+                        public void onError(ANError anError) {
+
+                        }
                     });
         }
+        Order.clearProductsFromCart();
     }
+
     public interface confirmDialogListener{
         void acceptButton();
         void descartarButton();

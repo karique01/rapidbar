@@ -42,4 +42,8 @@
     <string name="buy_product">Agregar al carrito</string>
     <string name="User">User</string>
     <string name="total_amount">Total Amount</string>
+    <string name="action_sign_up">Registrarse</string>
+    <string name="password">Password</string>
+    <string name="email">email</string>
+    <string name="name">name</string>
 </resources>

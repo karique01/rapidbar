@@ -48,6 +48,12 @@ public class CreditCardDialogVisa extends AppCompatDialogFragment {
         final View view = inflater.inflate(R.layout.dialog_add_credit_card_visa,null);
         viewGeneral = view;
 
+        try {
+            listener = (cardDialogListener)getTargetFragment();
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
+
         builder.setView(view)
                 .setTitle("Credit card")
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

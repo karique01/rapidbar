@@ -2,14 +2,15 @@ package pe.edu.upc.rapidbar.network;
 
 public class RapidBarApiService {
     public static String BASE_URL = "http://52.15.243.101/";
-    public static String PRODUCTS_BY_ORDER_URL = BASE_URL+"/api/productsByOrder";
+    public static String PRODUCTS_BY_ORDER_URL = BASE_URL+"api/productsByOrder";
+    public static String REGISTER_URL = BASE_URL+"api/register";
     public static String PRODUCTS_URL = BASE_URL + "api/products/";
     public static String PRODUCTS_DRINKS_URL = PRODUCTS_URL + "drinks";
     public static String PRODUCTS_SNACKS_URL = PRODUCTS_URL + "snacks";
     public static String BARS_URL = BASE_URL + "api/bars/";
 
     public static String CREDIT_CARDS_URL = BASE_URL +"api/creditCard/";
-    public static String ORDERS_URL = BASE_URL + "api/employee/5/order";
+    public static String ORDERS_URL = BASE_URL + "api/order/";
     public static String ALL_ORDERS_URL = BASE_URL + "api/order/2";
     public static String LOGIN_URL = BASE_URL + "api/login";
 

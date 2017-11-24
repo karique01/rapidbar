@@ -36,7 +36,8 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -66,6 +67,9 @@
     <string name="buy_product">Add to cart</string>
     <string name="User">User</string>
     <string name="total_amount">Total Amount</string>
+    <string name="password">Password</string>
+    <string name="email">email</string>
+    <string name="name">name</string>
 </resources>
 
 

@@ -27,10 +27,10 @@
             android:id="@+id/nav_consumption_records"
             android:icon="@drawable/ic_history_24dp"
             android:title="@string/menu_consumption_record" />
-        <item
+        <!--<item
             android:id="@+id/nav_favorites"
             android:icon="@drawable/ic_favorite_border_24dp"
-            android:title="@string/menu_favorites" />
+            android:title="@string/menu_favorites" />-->
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
